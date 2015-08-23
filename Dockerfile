@@ -5,7 +5,10 @@
 #
 
 # Pull base image.
-FROM dockerfile/python
+FROM ruby:1.9.3-slim
+
+RUN apt-get update
+RUN apt-get install -y build-essential python wget
 
 # Install Node.js
 RUN \
@@ -21,6 +24,23 @@ RUN \
   rm -rf /tmp/node-v* && \
   npm install -g npm && \
   printf '\n# Node.js\nexport PATH="node_modules/.bin:$PATH"' >> /root/.bashrc
+
+# CLEAN UP
+RUN apt-get remove -y build-essential python wget
+
+
+# Grunt needs git
+RUN apt-get -y install git
+
+# Install Sass
+
+RUN bash -l -c "gem install sass"
+
+# Install grunt
+RUN npm install -g grunt-cli
+
+# Install Bower
+RUN npm install -g bower
 
 # Define working directory.
 WORKDIR /data
