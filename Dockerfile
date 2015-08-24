@@ -42,8 +42,11 @@ RUN npm install -g grunt-cli
 # Install Bower
 RUN npm install -g bower
 
+# Define volumes
+VOLUME ["/var/www"]
+
 # Define working directory.
-WORKDIR /data
+WORKDIR /var/www
 
 # Define default command.
 CMD ["bash"]
