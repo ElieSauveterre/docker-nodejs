@@ -50,3 +50,5 @@ WORKDIR /var/www
 
 # Define default command.
 CMD ["bash"]
+
+EXPOSE 3000
