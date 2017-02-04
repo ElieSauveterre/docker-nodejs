@@ -43,10 +43,10 @@ RUN npm install -g grunt-cli
 RUN npm install -g bower
 
 # Define volumes
-VOLUME ["/var/www"]
+VOLUME ["/var/www/backend"]
 
 # Define working directory.
-WORKDIR /var/www
+WORKDIR /var/www/backend
 
 # Define default command.
 CMD ["bash"]
